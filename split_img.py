@@ -20,11 +20,11 @@ def load_file(argv):
 	return image, inputfile
 
 def change_image_channels(image):
-	# 4通道转3通道
+	# 4 channels to 3 channels
 	if image.mode == 'RGBA':
 		r, g, b, a = image.split()
 		image = Image.merge("RGB", (r, g, b))
-	# 1通道转3通道
+	# 1 channel to 3 channels
 	elif image.mode != 'RGB':
 		image = image.convert("RGB")
 	return image
@@ -48,7 +48,9 @@ def select_method():
 	print("8. 3 x 1" + "    " + "16. other")
 	choice = input("your choice: ")
 	choice = int(choice)
-	if(choice == 1):
+	if(choice == 0):
+		return 1, 1
+	elif(choice == 1):
 		return 1, 2
 	elif(choice == 2):
 		return 1, 3
